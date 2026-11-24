@@ -52,10 +52,11 @@
     body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
+<style media="print">body *{visibility:hidden}#menu,#menu *{visibility:visible}#menu{position:absolute;left:0;top:0;width:100%}#menu .add{display:none}</style>
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-white focus:p-3 focus:text-ost-braun">К содержимому</a>
-
+ 
 <!-- NAVBAR -->
 <header class="sticky top-[env(safe-area-inset-top,0px)] z-50 border-b-4 border-ost-orange bg-ost-papier/85 backdrop-blur dark:bg-[#1a1410]/85">
   <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -65,18 +66,19 @@
       <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </label>
     <nav aria-label="Главная навигация" class="absolute inset-x-0 top-16 hidden flex-col border-b-4 border-ost-orange bg-ost-papier p-4 peer-checked:flex dark:bg-[#1a1410] md:static md:flex md:flex-row md:border-0 md:bg-transparent md:p-0 md:dark:bg-transparent">
-      <a class="nav-link" href="#menu">Меню</a><a class="nav-link" href="#plan">Сеты</a><a class="nav-link" href="#lexikon">Словарь</a><a class="nav-link" href="#stimmen">Отзывы</a><a class="nav-link" href="#faq">Вопросы</a>
+      <a class="nav-link" href="#menu">Меню</a><a class="nav-link" href="#plan">Сеты</a><a class="nav-link" href="#lexikon">Словарь</a><a class="nav-link" href="#stimmen">Отзывы</a><a class="nav-link" href="#faq">Вопросы</a><button type="button" data-acc class="nav-link text-left md:hidden">Войти</button>
     </nav>
     <div class="hidden items-center gap-3 md:flex">
       <button id="theme" type="button" class="p-2 transition-colors hover:text-ost-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ost-orange" aria-label="Переключить тему">
         <svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
         <svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4l1.4-1.4"/></svg>
       </button>
+      <button type="button" data-acc class="btn !py-1.5">Войти</button>
       <a href="#antrag" class="btn-primary !py-1.5">Забронировать</a>
     </div>
   </div>
 </header>
-
+ 
 <main id="main">
 <!-- HERO -->
 <section id="top" class="relative isolate overflow-hidden bg-ost-braun text-ost-papier" aria-labelledby="hero-h">
@@ -108,7 +110,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- FEATURES -->
 <section class="section" aria-labelledby="feat-h">
   <h2 id="feat-h" class="h2">Почему к нам</h2>
@@ -118,14 +120,14 @@
     <article class="card p-6"><div class="font-display text-5xl text-ost-orange" aria-hidden="true">03</div><h3 class="mt-3 font-display text-xl uppercase">Интерьер 70-х</h3><p class="lead !mt-1">Рыжие обои, радиоприёмник, ламповый телевизор и мебель как в квартире 70-х.</p></article>
   </div>
 </section>
-
+ 
 <!-- SPEISEKARTE -->
 <section id="menu" class="section pt-0" aria-labelledby="menu-h">
   <h2 id="menu-h" class="h2">Наше меню</h2>
   <p class="lead">Восемь блюд домашней кухни. Названия простые, вкус — отличный.</p>
   <div id="dishes" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
 </section>
-
+ 
 <!-- PLÄNE (pricing) -->
 <section id="plan" class="bg-ost-mint/20 dark:bg-ost-mint/10" aria-labelledby="plan-h">
   <div class="section">
@@ -159,14 +161,14 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- LEXIKON -->
 <section id="lexikon" class="section" aria-labelledby="lex-h">
   <h2 id="lex-h" class="h2">Кулинарный словарь</h2>
   <p class="lead">Выучите несколько слов — и вас примут за своего.</p>
   <dl id="lex" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></dl>
 </section>
-
+ 
 <!-- STIMMEN: snap-карусель -->
 <section id="stimmen" class="bg-ost-orange/15 dark:bg-ost-orange/10" aria-labelledby="rev-h">
   <div class="section">
@@ -179,7 +181,25 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- ПАРТНЁР (реклама) -->
+<aside class="section pt-0" aria-label="Реклама партнёра">
+  <div class="card relative grid items-center gap-6 border-dashed p-6 sm:grid-cols-[auto_1fr_auto] sm:p-8">
+    <span class="absolute -top-3 left-4 bg-ost-papier px-2 font-display text-xs uppercase tracking-widest text-ost-braun/70 dark:bg-[#1a1410] dark:text-ost-papier/70">Реклама · партнёр</span>
+    <svg class="h-20 w-20 text-ost-orange" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3" role="img" aria-label="Чашка кофе"><path d="M14 30h42v16a18 18 0 01-18 18h-6a18 18 0 01-18-18V30z"/><path d="M56 34h6a8 8 0 010 16h-6"/><path d="M26 12c-3 4 3 6 0 10M38 12c-3 4 3 6 0 10M50 12c-3 4 3 6 0 10" stroke-linecap="round"/></svg>
+    <div>
+      <h2 class="font-display text-2xl uppercase sm:text-3xl">Кофейня-обжарка «Утренний зерно»</h2>
+      <p class="mt-1 font-type text-sm text-ost-braun/80 dark:text-ost-papier/80">Свежеобжаренный кофе к вашему десерту. Гостям Европа-Кухни — скидка 15% на зерно и дрип-пакеты.</p>
+      <p class="mt-3 font-type text-sm">Промокод: <b id="promo" class="border-2 border-dashed border-ost-orange px-2 py-0.5 font-display tracking-widest text-ost-orange">EUROPA15</b></p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <a href="https://example.com/" target="_blank" rel="sponsored noopener noreferrer" class="btn-primary">Перейти к партнёру</a>
+      <button type="button" id="promo-copy" class="btn !py-1.5">Скопировать код</button>
+      <p id="promo-msg" role="status" class="min-h-4 text-center font-type text-xs"></p>
+    </div>
+  </div>
+</aside>
+ 
 <!-- FAQ -->
 <section id="faq" class="section" aria-labelledby="faq-h">
   <h2 id="faq-h" class="h2">Частые вопросы</h2>
@@ -189,7 +209,7 @@
     <details class="group card p-4"><summary class="flex cursor-pointer list-none items-center justify-between font-display text-lg uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ost-orange">Есть ли вегетарианские блюда?<span class="transition-transform duration-300 group-open:rotate-180" aria-hidden="true">▾</span></summary><p class="lead !mt-3">Да: творожные оладьи, шоколадный пудинг, солёные огурцы и картофельные блюда.</p></details>
   </div>
 </section>
-
+ 
 <!-- ANTRAG (booking form) -->
 <section id="antrag" class="bg-ost-braun text-ost-papier" aria-labelledby="book-h">
   <div class="section grid gap-10 md:grid-cols-2">
@@ -246,52 +266,42 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- БЛЮДО ДНЯ -->
 <section id="dish-day" class="section" aria-labelledby="dday-h">
   <div class="section">
     <h2 id="dday-h" class="h2">Блюдо дня</h2>
-    <p class="lead">Каждый день недели — своё блюдо из восточногерманской кухни. Можно добавить его прямо в чек.</p>
+    <p class="lead">Мы выбрали для вас случайное блюдо. Не нравится — нажмите кнопку, и появится другое. Любое можно добавить в чек.</p>
     <div id="dday" class="mt-10 card p-6 sm:p-10 grid gap-4 sm:grid-cols-[1fr_320px] items-center"></div>
     <p class="mt-6 text-center"><button id="dday-random" type="button" class="btn-outline">Посоветуйте ещё что-нибудь</button></p>
   </div>
 </section>
-
+ 
 <!-- ВИКТОРИНА -->
 <section id="quiz" class="bg-ost-orange/15 dark:bg-ost-orange/10" aria-labelledby="quiz-h">
   <div class="section">
     <h2 id="quiz-h" class="h2">Викторина</h2>
-    <p class="lead">Проверьте, насколько вы хорошо знаете блюда домашней кухни. Подсказок нет — отвечайте честно.</p>
-    <div id="quiz-box" class="mt-10 space-y-5"></div>
-    <div id="quiz-actions" class="mt-8 flex justify-center gap-3">
-      <button id="quiz-check" type="button" class="btn-primary">Проверить</button>
-      <button id="quiz-reset" type="button" class="btn-outline">Начать заново</button>
-    </div>
-    <div id="quiz-result" class="mt-8 text-center hidden"></div>
+    <p class="lead">Пять коротких вопросов о блюдах нашего меню. Ответ показываем сразу.</p>
+    <div id="quiz-box" class="card mt-10 max-w-2xl p-6" aria-live="polite"></div>
   </div>
 </section>
-
+ 
 <!-- ОТКРЫТКА -->
 <section id="postcard" class="section" aria-labelledby="post-h">
-  <div class="section">
-    <h2 id="post-h" class="h2">Открытка Европа-Кухни</h2>
-    <p class="lead">Выберите блюдо, напишите поздравление и скачайте открытку в виде SVG-картинки.</p>
-    <div class="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-4">
-      <div class="card p-4 flex flex-col gap-3">
-        <label class="font-display text-sm uppercase">Блюдо на открытке</label>
-        <select id="pc-dish" class="input"></select>
-        <label class="font-display text-sm uppercase mt-2">Поздравление</label>
-        <textarea id="pc-msg" class="input flex-1" rows="3" placeholder="Приглашаю на Солянку!"></textarea>
-        <p class="mt-2 font-type text-xs text-ost-braun/60 dark:text-ost-papier/60">До 60 символов</p>
-      </div>
-      <div class="card p-6 flex flex-col items-center justify-center min-h-[320px]">
-        <div id="pc-preview" class="pc-frame"></div>
-        <button id="pc-download" type="button" class="mt-4 btn-primary">Скачать открытку (SVG)</button>
-      </div>
+  <h2 id="post-h" class="h2">Открытка-отчёт</h2>
+  <p class="lead">Отметьте блюда, которые вы попробовали, — они появятся на открытке вместе с итоговой суммой. Добавьте подпись и скачайте картинку.</p>
+  <div class="mt-10 grid items-start gap-8 lg:grid-cols-[1fr_auto]">
+    <div class="card flex flex-col gap-4 p-5">
+      <fieldset><legend class="font-display text-sm uppercase">Что вы ели</legend><div id="pc-list" class="mt-2 grid gap-2 sm:grid-cols-2"></div></fieldset>
+      <div><label for="pc-name" class="font-display text-sm uppercase">Ваше имя</label><input id="pc-name" maxlength="24" class="input" placeholder="Анна"></div>
+      <div><label for="pc-msg" class="font-display text-sm uppercase">Подпись</label><input id="pc-msg" maxlength="48" class="input" placeholder="Было очень вкусно!"></div>
+      <div class="flex flex-wrap gap-3"><button id="pc-download" type="button" class="btn-primary">Скачать PNG</button><button id="pc-clear" type="button" class="btn">Очистить</button></div>
+      <p id="pc-status" role="status" class="font-type text-xs"></p>
     </div>
+    <div id="pc-preview" class="mx-auto w-full max-w-sm" aria-label="Предпросмотр открытки"></div>
   </div>
 </section>
-
+ 
 <!-- ОСТ-ИНСТРУМЕНТЫ -->
 <section id="tools" class="bg-ost-mint/20 dark:bg-ost-mint/10" aria-labelledby="tools-h">
   <div class="section">
@@ -300,19 +310,26 @@
       <article class="card p-6">
         <h3 class="font-display text-xl uppercase">Озвучить объявление</h3>
         <p class="lead !mt-1">Голосовой синтез браузера прочитает приветствие с главной страницы.</p>
-        <button id="pc-speak" type="button" class="btn-primary mt-3">▶ Озвучить объявление</button>
+        <button id="pc-speak" type="button" class="btn-primary mt-3">Озвучить объявление</button>
       </article>
       <article class="card p-6">
         <h3 class="font-display text-xl uppercase">Распечатать меню</h3>
         <p class="lead !mt-1">Открывает только меню в удобном для печати виде.</p>
-        <button id="btn-print-menu" type="button" class="btn-primary mt-3">🖨 Распечатать меню</button>
+        <button id="btn-print-menu" type="button" class="btn-primary mt-3">Распечатать меню</button>
       </article>
     </div>
   </div>
 </section>
-
+ 
 </main>
-
+ 
+<dialog id="acc" class="m-auto w-[min(26rem,calc(100vw-2rem))] border-2 border-ost-braun bg-ost-papier p-0 text-ost-braun shadow-[6px_6px_0_0_#2b1d14] backdrop:bg-black/60 dark:border-ost-papier/70 dark:bg-[#261c15] dark:text-ost-papier" aria-labelledby="acc-title">
+  <div class="max-h-[85vh] overflow-y-auto p-5">
+    <div class="flex items-start justify-between gap-3"><h2 id="acc-title" class="font-display text-2xl uppercase"></h2>
+      <button type="button" id="acc-close" aria-label="Закрыть" class="p-1 hover:text-ost-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ost-orange"><svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div id="acc-body" class="mt-3 font-type text-sm"></div>
+  </div>
+</dialog>
 <footer class="bg-black text-ost-papier/80">
   <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
     <div><p class="font-display text-xl font-bold uppercase text-white"><span class="text-ost-orange">✦</span> Европа-Кухня</p><p class="mt-2 font-type text-sm">Кухня Восточной Европы. Домашние рецепты — на вашем столе.</p></div>
@@ -321,8 +338,9 @@
     <div><h3 class="footer-h">Контакты</h3><ul class="space-y-1 font-type text-sm"><li>ул. Панельная, 89</li><li>+358 40 123 4567</li><li>hello@ost-kukhnya.example</li></ul></div>
   </div>
   <p class="border-t border-white/10 py-4 text-center font-type text-xs">© 2026 Европа-Кухня</p>
+  <p class="border-t border-white/10 pb-4 pt-3 text-center font-type text-xs">Фото блюд — Википедия / Wikimedia Commons (свободные лицензии). Открытка использует рисованные иконки.</p>
 </footer>
-
+ 
 <div class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] right-4 z-40 flex flex-col items-end gap-2">
   <button id="theme2" type="button" class="border-2 border-ost-braun bg-ost-senf p-3 shadow-[3px_3px_0_0_#2b1d14] transition hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ost-orange md:hidden" aria-label="Переключить тему"><svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4l1.4-1.4"/></svg></button>
   <button id="slip-open" type="button" aria-expanded="false" aria-controls="slip" class="btn-primary">Чек заказа · <span id="cart" aria-live="polite">0</span></button>
@@ -335,7 +353,7 @@
     <p id="slip-msg" role="status" class="mt-2 min-h-5 text-center text-xs"></p>
   </aside>
 </div>
-
+ 
 <script>
   const dishes = [
     ['oma','Кровяная колбаса|Кровавая колбаса с пюре','Кровяная и печёночная колбаса с картофельным пюре и квашеной капустой',9,'from-red-300 to-stone-400'],
@@ -359,21 +377,10 @@
     wurz: `<rect x="26" y="38" width="46" height="40" rx="5" fill="#e6c07e" transform="rotate(-6 50 58)"/><path d="M32 46q18-10 38 0q4 20-6 28q-20 6-32-4q-6-12 0-24z" fill="#b97a3e"/><path d="M34 50q8-4 14 2t14-1q6 6-2 10-6 6-14 2-8 2-12-6z" fill="#f4c64a"/><circle cx="44" cy="58" r="2" fill="#fbe08a"/><circle cx="58" cy="52" r="2" fill="#e8a928"/><path d="M52 70l3-3m3 3l3-3" stroke="#3f8f3f" stroke-width="2"/>`,
     quark: `<ellipse cx="50" cy="66" rx="26" ry="9" fill="#d49a42"/><ellipse cx="50" cy="60" rx="26" ry="9" fill="#e5b25a"/><ellipse cx="50" cy="52" rx="25" ry="9" fill="#d49a42"/><ellipse cx="50" cy="46" rx="25" ry="9" fill="#ecbf6b"/><g fill="#fff" opacity=".9"><circle cx="40" cy="44" r="1.5"/><circle cx="52" cy="42" r="1.5"/><circle cx="60" cy="47" r="1.5"/><circle cx="46" cy="49" r="1.5"/><circle cx="55" cy="50" r="1.5"/></g><circle cx="50" cy="40" r="8" fill="#e8d58a"/><circle cx="48" cy="38" r="2.5" fill="#f6ecb8"/>`
   };
-
-  /* Картинки блюд через интернет (без скачивания файлов) */
-  const dishImg = {
-    oma: 'https://images.unsplash.com/photo-1544035143-965f048b6311?w=400&q=80',
-    hund: 'https://images.unsplash.com/photo-1563805042-7684c689e19c?w=400&q=80',
-    jager: 'https://images.unsplash.com/photo-1612874742237-652622257844?w=400&q=80',
-    solj: 'https://images.unsplash.com/photo-1569721221083-896fb9947964?w=400&q=80',
-    broiler: 'https://images.unsplash.com/photo-1529216726379-39667884f986?w=400&q=80',
-    ket: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80',
-    wurz: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80',
-    quark: 'https://images.unsplash.com/photo-1550609770-627a7ac7c3c5?w=400&q=80'
-  };
-  document.getElementById('dishes').innerHTML = dishes.map((d, i) => `
+ 
+    document.getElementById('dishes').innerHTML = dishes.map((d, i) => `
     <article class="card group overflow-hidden hover:scale-105">
-      <div class="flex aspect-square items-center justify-center bg-gradient-to-br ${d[4]} "><img src="${dishImg[d[0]]}" alt="${d[1].split('|')[1]}" class="w-full h-full object-cover" onerror="this.outerHTML='${plate(art[d[0]])}'"></div>
+      <div class="flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br ${d[4]}" role="img" aria-label="Блюдо: ${d[1].split('|')[1]}" data-k="${d[0]}">${plate(art[d[0]])}</div>
       <div class="space-y-1 p-4">
         <h3 class="font-display text-xl uppercase">${d[1].split('|')[0]}</h3><p class="font-type text-xs font-bold text-ost-orange">${d[1].split('|')[1]}</p>
         <p class="line-clamp-3 font-type text-xs text-ost-braun/80 dark:text-ost-papier/80">${d[2]}</p>
@@ -381,13 +388,14 @@
         <button type="button" data-i="${i}" class="add btn-primary !px-3 !py-1.5" aria-label="Добавить в корзину: ${d[1].replace('|',' — ')}">В корзину</button></div>
       </div>
     </article>`).join('');
-
+ 
+  if (window.applyPhotos) applyPhotos(document.getElementById('dishes'));
   const words = [
     ['Борщ','Борщ — традиционный суп из свёклы и овощей'],['Вареники','Вареники — тесто с начинкой из картофеля, творога или вишни'],['Драники','Драники — оладьи из натёртой картошки'],
     ['Хинкали','Хинкали — мясные пельмени с бульоном внутри'],['Бигос','Бигос — рагу из капусты и мяса'],['Шашлык','Шашлык — мясо на углях, маринованное в специях']
   ];
   document.getElementById('lex').innerHTML = words.map(w => `<div class="card p-4"><dt class="font-display text-2xl uppercase text-ost-orange">${w[0]}</dt><dd class="mt-1 font-type text-sm">${w[1]}</dd></div>`).join('');
-
+ 
   const cart = {}, slip = document.getElementById('slip'), list = document.getElementById('slip-list'), msg = document.getElementById('slip-msg'), order = document.getElementById('order');
   const nm = i => dishes[i][1].split('|')[0];
   const render = () => {
@@ -402,14 +410,21 @@
   const slipBtn = document.getElementById('slip-open');
   slipBtn.addEventListener('click', () => { const hidden = slip.classList.toggle('hidden'); slipBtn.setAttribute('aria-expanded', String(!hidden)); });
   document.getElementById('slip-date').textContent = new Date().toLocaleDateString('ru-RU');
-  order.addEventListener('click', () => { const no = String(Math.floor(Math.random() * 90) + 10).padStart(3, '0'); Object.keys(cart).forEach(k => delete cart[k]); render(); msg.textContent = 'Заказ принят. Ваш номер: ' + no; });
+  order.addEventListener('click', () => {
+    const items = Object.keys(cart).map(i => ({ name: nm(i), qty: cart[i], price: dishes[i][3] }));
+    if (!items.length) return;
+    if (!window.EK || !EK.user()) { msg.textContent = 'Чтобы оформить заказ, войдите или зарегистрируйтесь — чек сохранится.'; if (window.EK) EK.open('login'); return; }
+    const no = EK.saveOrder(items);
+    Object.keys(cart).forEach(k => delete cart[k]); render();
+    msg.textContent = 'Заказ принят. Ваш номер: ' + no + '. Он сохранён в личном кабинете.';
+  });
   render();
-
+ 
   const root = document.documentElement;
   try { if (localStorage.theme === 'dark' || (!localStorage.theme && matchMedia('(prefers-color-scheme: dark)').matches)) root.classList.add('dark'); } catch (e) {}
   const toggle = () => { const d = root.classList.toggle('dark'); try { localStorage.theme = d ? 'dark' : 'light'; } catch (e) {} };
   ['theme','theme2'].forEach(id => document.getElementById(id).addEventListener('click', toggle));
-
+ 
   const form = document.getElementById('form'), btn = document.getElementById('submit'), st = document.getElementById('status');
   form.addEventListener('submit', e => {
     e.preventDefault(); st.innerHTML = '';
@@ -420,7 +435,7 @@
 </script>
 <script>
   /* ===== Европа-Кухня: оригинальные функции (добавлено, существующее не меняется) ===== */
-
+ 
   /* Кухня сейчас — статус и отсчёт в реальном времени */
   (function () {
     var status = document.getElementById('kitchen-status');
@@ -447,106 +462,112 @@
     }
     tick(); setInterval(tick, 1000);
   })();
-
+ 
   /* Блюдо дня */
   (function () {
-    var week = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-    var map = { Пн: 'solj', Вт: 'oma', Ср: 'hund', Чт: 'jager', Пт: 'broiler', Сб: 'ket', Вс: 'quark' };
-    var wrap = document.getElementById('dday');
-    var btn = document.getElementById('dday-random');
-    var keys = Object.keys(art);
-    function show(key) {
-      var d = dishes.find(function (x) { return x[0] === key; });
-      var i = dishes.findIndex(function (x) { return x[0] === key; });
-      var day = week[new Date().getDay()];
-      var name = d[1].split('|')[0], ru = d[1].split('|')[1];
-      wrap.innerHTML = '<div class="flex flex-col gap-4 sm:flex-row sm:items-center"><div class="flex aspect-square items-center justify-center bg-gradient-to-br ' + d[4] + '" role="img" aria-label="Иллюстрация блюда: ' + ru + '">' + plate(art[key]) + '</div><div><p class="font-type text-xs uppercase text-ost-senf font-display mb-1">' + day + ' — блюдо дня</p><h3 class="font-display text-2xl uppercase">' + name + '</h3><p class="font-type text-xs font-bold text-ost-orange">' + ru + '</p><p class="mt-2 line-clamp-3 font-type text-xs text-ost-braun/80 dark:text-ost-papier/80">' + d[2] + '</p><div class="mt-4 flex items-center justify-between"><span class="font-display text-2xl font-bold">' + d[3] + ' €</span><button type="button" class="add btn-primary !px-4 !py-2" data-i="' + i + '">В чек</button></div></div></div>';
-      wrap.querySelector('.add').addEventListener('click', function () {
-        cart[i] = (cart[i] || 0) + 1;
-        msg.textContent = 'Добавлено в чек: ' + name;
-        render();
+    var wrap = document.getElementById('dday'), btn = document.getElementById('dday-random');
+    var current = -1;
+    function show(i) {
+      current = i;
+      var d = dishes[i], name = d[1].split('|')[0], ru = d[1].split('|')[1];
+      wrap.innerHTML = '<div class="flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br ' + d[4] + '" role="img" aria-label="Блюдо: ' + ru + '" data-k="' + d[0] + '">' + plate(art[d[0]]) + '</div><div><p class="mb-1 font-display text-xs uppercase tracking-widest text-ost-orange">Советуем сегодня</p><h3 class="font-display text-3xl uppercase">' + name + '</h3><p class="font-type text-xs font-bold text-ost-orange">' + ru + '</p><p class="mt-2 font-type text-sm text-ost-braun/80 dark:text-ost-papier/80">' + d[2] + '</p><div class="mt-4 flex items-center justify-between"><span class="font-display text-2xl font-bold">' + d[3] + ' €</span><button type="button" class="dd-add btn-primary !px-4 !py-2">В чек</button></div></div>';
+      if (window.applyPhotos) applyPhotos(wrap);
+      wrap.querySelector('.dd-add').addEventListener('click', function () {
+        cart[i] = (cart[i] || 0) + 1; msg.textContent = 'Добавлено в чек: ' + name; render();
       });
     }
-    show(map[week[new Date().getDay()]]);
-    btn.addEventListener('click', function () {
-      show(keys[Math.floor(Math.random() * keys.length)]);
-    });
+    function pickNew() {
+      var i; do { i = Math.floor(Math.random() * dishes.length); } while (i === current && dishes.length > 1);
+      show(i);
+    }
+    wrap.setAttribute('aria-live', 'polite');
+    pickNew();
+    btn.addEventListener('click', pickNew);
   })();
-
+ 
   /* Викторина */
   (function () {
     var box = document.getElementById('quiz-box');
-    var actions = document.getElementById('quiz-actions');
-    var result = document.getElementById('quiz-result');
     var qs = [
-      { q: 'Что такое кровяная колбаса ("Кровавая колбаса с пюре")?', a: ['Кровяная и печёночная колбаса с картофельным пюре и квашеной капустой', 'Пирог из картошки с квашёной капустой', 'Запеканка из ягод'], c: 0 },
-      { q: 'Из чего сделан шоколадный пудинг ("Домашний десерт")?', a: ['Печенье, какао-глазурь и кокосовый жир (без выпечки)', 'Мясо и собачий корм (страшилка)', 'Шоколад и колбаса'], c: 0 },
-      { q: 'Какой напиток считается символом домашней кухни?', a: ['Домашний компот', 'Кока-кола', 'Квас'], c: 0 },
-      { q: 'Кто такой бабушкин рецепт?', a: ['Семейное блюдо из старых поваренных книг', 'Овощной рынок в столице', 'Марка восточного чая'], c: 0 }
+      { q: 'Из чего делают драники?', a: ['Из натёртого картофеля', 'Из манной крупы', 'Из рисовой муки'], c: 0 },
+      { q: 'Какой овощ придаёт борщу красный цвет?', a: ['Морковь', 'Свёкла', 'Помидоры черри'], c: 1 },
+      { q: 'Что находится внутри хинкали вместе с мясом?', a: ['Сыр', 'Бульон', 'Яйцо'], c: 1 },
+      { q: 'Основа бигоса — это…', a: ['Капуста и мясо', 'Рис и рыба', 'Грибы и сливки'], c: 0 },
+      { q: 'Чем традиционно начиняют вареники?', a: ['Только мясом', 'Картофелем, творогом или вишней', 'Салатом'], c: 1 }
     ];
-    var answered = qs.map(function () { return null; });
-    function renderQuiz() {
-      box.innerHTML = qs.map(function (q, i) {
-        return '<fieldset class="quiz-card border-2 border-ost-braun p-4 dark:border-ost-papier/60"><legend class="font-display text-lg uppercase text-ost-orange px-2">Вопрос ' + (i + 1) + '</legend><p class="mb-3 font-type">' + q.q + '</p>' + q.a.map(function (ans, j) {
-          return '<label class="block mb-3 cursor-pointer"><input type="radio" name="q' + i + '" value="' + j + '" class="accent-ost-orange mt-0.5" ' + (answered[i] === j ? 'checked' : '') + '> <span class="font-type">' + ans + '</span></label>';
-        }).join('') + '</fieldset>';
-      }).join('');
-      box.querySelectorAll('input').forEach(function (inp) {
-        inp.addEventListener('change', function (e) {
-          answered[+inp.name.slice(1)] = +e.target.value;
+    var i = 0, score = 0;
+    function ask() {
+      var q = qs[i];
+      box.innerHTML = '<p class="font-display text-xs uppercase tracking-widest text-ost-orange">Вопрос ' + (i + 1) + ' из ' + qs.length + '</p><h3 class="mt-2 font-display text-2xl uppercase">' + q.q + '</h3><div class="mt-4 grid gap-2">' + q.a.map(function (a, j) { return '<button type="button" data-j="' + j + '" class="qa btn w-full justify-start !normal-case !tracking-normal font-type hover:bg-ost-senf/40">' + a + '</button>'; }).join('') + '</div><p id="qfb" class="mt-4 min-h-6 font-type text-sm"></p>';
+      box.querySelectorAll('.qa').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var j = +b.dataset.j, ok = j === q.c;
+          if (ok) score++;
+          box.querySelectorAll('.qa').forEach(function (x) {
+            x.disabled = true;
+            if (+x.dataset.j === q.c) x.classList.add('!bg-green-200', '!text-ost-braun');
+          });
+          if (!ok) b.classList.add('!bg-red-200', '!text-ost-braun');
+          document.getElementById('qfb').innerHTML = (ok ? 'Верно!' : 'Не совсем. Правильный ответ: ' + q.a[q.c] + '.') + ' <button type="button" id="qnext" class="btn-primary ml-2 !px-3 !py-1">' + (i + 1 < qs.length ? 'Дальше' : 'Результат') + '</button>';
+          document.getElementById('qnext').addEventListener('click', function () { i++; i < qs.length ? ask() : finish(); });
+          document.getElementById('qnext').focus();
         });
       });
     }
-    renderQuiz();
-    document.getElementById('quiz-check').addEventListener('click', function () {
-      var score = 0;
-      qs.forEach(function (q, i) { if (answered[i] === q.c) score++; });
-      var txt = score === 4 ? 'Эксперт домашней кухни! Солянку теперь готовите лучше бабушки.' : score === 3 ? 'Хороший результат! Загляните в словарь — будете идеальны.' : score === 2 ? 'Есть что подтянуть — меню и словарь в помощь.' : 'Советуем начать с меню и словаря рецептов.';
-      result.innerHTML = '<div class="card p-6 inline-block"><p class="font-display text-3xl font-bold mb-2">' + score + ' из 4</p><p class="font-type mb-3">' + txt + '</p>' + (score >= 3 ? '<span class="stamp">Отлично ✓</span>' : '') + '</div>';
-      result.classList.remove('hidden');
-      actions.classList.add('hidden');
-    });
-    document.getElementById('quiz-reset').addEventListener('click', function () {
-      answered = qs.map(function () { return null; });
-      renderQuiz();
-      result.classList.add('hidden');
-      actions.classList.remove('hidden');
-    });
-  })();
-
-  /* Открытка Европа-Кухни */
-  (function () {
-    var sel = document.getElementById('pc-dish');
-    var ta = document.getElementById('pc-msg');
-    var preview = document.getElementById('pc-preview');
-    var dl = document.getElementById('pc-download');
-    dishes.forEach(function (d, i) {
-      var o = document.createElement('option');
-      o.value = i;
-      o.textContent = d[1].split('|')[0] + ' — ' + d[3] + ' €';
-      sel.appendChild(o);
-    });
-    function draw() {
-      var d = dishes[sel.value];
-      var name = d[1].split('|')[0];
-      var msg = ta.value.slice(0, 60) || 'Приглашаю в ресторан!';
-      var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="420" height="590" viewBox="0 0 420 590"><rect width="420" height="590" fill="#f3e9d2"/><rect x="10" y="10" width="400" height="570" fill="none" stroke="#2b1d14" stroke-width="6"/><text x="210" y="72" font-family="Oswald,Impact,sans-serif" font-size="28" font-weight="bold" fill="#e8590c" text-anchor="middle">Европа-Кухня</text><text x="210" y="102" font-family="\'Special Elite\',monospace" font-size="17" fill="#2b1d14" text-anchor="middle">' + name + '</text><g transform="translate(55,135) scale(2.7)">' + art[d[0]] + '</g><text x="210" y="485" font-family="\'Special Elite\',monospace" font-size="18" fill="#2b1d14" text-anchor="middle">' + d[3] + ' €</text><text x="30" y="535" font-family="\'Special Elite\',monospace" font-size="16" fill="#2b1d14">' + msg + '</text><text x="390" y="578" font-family="\'Special Elite\',monospace" font-size="13" fill="#2b1d14" text-anchor="end">ost-kukhnya.example</text></svg>';
-      preview.innerHTML = svg;
-      dl.onclick = function () {
-        var blob = new Blob([svg], { type: 'image/svg+xml' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'ost-kukhnya-otkrytka.svg';
-        a.click();
-        URL.revokeObjectURL(url);
-      };
+    function finish() {
+      var txt = score === qs.length ? 'Безупречно! Вы знаете нашу кухню лучше шефа.' : score >= 3 ? 'Хороший результат! Загляните в словарь — станете экспертом.' : 'Загляните в меню и словарь, а потом попробуйте ещё раз.';
+      box.innerHTML = '<p class="font-display text-4xl font-bold">' + score + ' из ' + qs.length + '</p><p class="mt-2 font-type">' + txt + '</p>' + (score >= 4 ? '<p class="mt-3"><span class="stamp">Отлично ✓</span></p>' : '') + '<button type="button" id="qreset" class="btn-outline mt-5 !border-ost-braun !text-ost-braun dark:!border-ost-papier dark:!text-ost-papier">Пройти заново</button>';
+      document.getElementById('qreset').addEventListener('click', function () { i = 0; score = 0; ask(); });
     }
-    sel.addEventListener('change', draw);
-    ta.addEventListener('input', draw);
+    ask();
+  })();
+ 
+  /* Открытка-отчёт */
+  (function () {
+    var list = document.getElementById('pc-list'), preview = document.getElementById('pc-preview'), st = document.getElementById('pc-status');
+    var nameIn = document.getElementById('pc-name'), msgIn = document.getElementById('pc-msg');
+    var chosen = {};
+    var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+    list.innerHTML = dishes.map(function (d, i) {
+      return '<label class="flex cursor-pointer items-center gap-2 border-2 border-ost-braun/40 p-2 font-type text-sm has-[:checked]:border-ost-orange has-[:checked]:bg-ost-senf/30 dark:border-ost-papier/40"><input type="checkbox" value="' + i + '" class="h-4 w-4 accent-ost-orange"><span class="flex-1">' + d[1].split('|')[0] + '</span><span>' + d[3] + ' €</span></label>';
+    }).join('');
+    function build() {
+      var ids = Object.keys(chosen).filter(function (k) { return chosen[k]; }).map(Number);
+      var total = ids.reduce(function (s, i) { return s + dishes[i][3]; }, 0);
+      var shown = ids.slice(0, 4), cols = shown.length > 2 ? 2 : shown.length || 1;
+      var cell = 150, x0 = 210 - cols * cell / 2, body = '';
+      if (!ids.length) body = '<text x="210" y="260" font-family="Special Elite,Courier New,monospace" font-size="16" fill="#2b1d14" text-anchor="middle" opacity=".6">Отметьте блюда слева</text>';
+      shown.forEach(function (i, n) {
+        var cx = x0 + (n % cols) * cell, cy = 120 + Math.floor(n / cols) * 150;
+        body += '<g transform="translate(' + cx + ',' + cy + ') scale(1.5)">' + plate(art[dishes[i][0]]).replace(/^<svg[^>]*>/, '<g>').replace('</svg>', '</g>') + '</g>';
+      });
+      var lines = ids.slice(0, 6).map(function (i, n) {
+        return '<text x="40" y="' + (428 + n * 18) + '" font-family="Special Elite,Courier New,monospace" font-size="13" fill="#2b1d14">' + esc(dishes[i][1].split('|')[0]) + '</text><text x="380" y="' + (428 + n * 18) + '" font-family="Special Elite,Courier New,monospace" font-size="13" fill="#2b1d14" text-anchor="end">' + dishes[i][3] + ' €</text>';
+      }).join('');
+      var who = nameIn.value.trim(), sign = msgIn.value.trim();
+      return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" width="420" height="600"><rect width="420" height="600" fill="#f3e9d2"/><rect x="10" y="10" width="400" height="580" fill="none" stroke="#2b1d14" stroke-width="5"/><text x="210" y="58" font-family="Oswald,Impact,sans-serif" font-size="30" font-weight="700" fill="#e8590c" text-anchor="middle">ЕВРОПА-КУХНЯ</text><text x="210" y="82" font-family="Special Elite,Courier New,monospace" font-size="13" fill="#2b1d14" text-anchor="middle">открытка-отчёт · ' + new Date().toLocaleDateString('ru-RU') + '</text>' + body + '<line x1="40" y1="410" x2="380" y2="410" stroke="#2b1d14" stroke-dasharray="4 4"/>' + lines + '<text x="40" y="545" font-family="Oswald,Impact,sans-serif" font-size="20" fill="#2b1d14">Итого: ' + total + ' €</text><text x="40" y="568" font-family="Special Elite,Courier New,monospace" font-size="13" fill="#2b1d14">' + esc(sign || 'Спасибо за вкусный вечер!') + (who ? ' — ' + esc(who) : '') + '</text></svg>';
+    }
+    function draw() { preview.innerHTML = build().replace('width="420" height="600"', 'class="h-auto w-full border-2 border-ost-braun shadow-[5px_5px_0_0_#2b1d14]"'); }
+    list.addEventListener('change', function (e) { chosen[e.target.value] = e.target.checked; draw(); });
+    nameIn.addEventListener('input', draw); msgIn.addEventListener('input', draw);
+    document.getElementById('pc-clear').addEventListener('click', function () {
+      chosen = {}; list.querySelectorAll('input').forEach(function (c) { c.checked = false; }); nameIn.value = ''; msgIn.value = ''; draw(); st.textContent = '';
+    });
+    document.getElementById('pc-download').addEventListener('click', function () {
+      if (!Object.keys(chosen).some(function (k) { return chosen[k]; })) { st.textContent = 'Сначала отметьте хотя бы одно блюдо.'; return; }
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement('canvas'); c.width = 840; c.height = 1200;
+        c.getContext('2d').drawImage(img, 0, 0, 840, 1200);
+        var a = document.createElement('a'); a.href = c.toDataURL('image/png'); a.download = 'evropa-kukhnya-otkrytka.png'; a.click();
+        st.textContent = 'Открытка сохранена.';
+      };
+      img.onerror = function () { st.textContent = 'Не удалось создать картинку, попробуйте ещё раз.'; };
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(build());
+    });
     draw();
   })();
-
+ 
   /* Озвучивание объявления */
   document.getElementById('pc-speak').addEventListener('click', function () {
     if (!window.speechSynthesis) {
@@ -561,15 +582,174 @@
     u.rate = 0.95;
     window.speechSynthesis.speak(u);
   });
-
-  /* Распечатать меню */
-  document.getElementById('btn-print-menu').addEventListener('click', function () {
-    var menu = document.getElementById('menu').cloneNode(true);
-    var win = window.open('', '', 'width=900,height=1100');
-    win.document.write('<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Меню — Европа-Кухня</title><script src="https://cdn.tailwindcss.com/3.4.17"></script><script>tailwind.config={theme:{extend:{colors:{ost:{orange:"#e8590c",senf:"#e0a526",mint:"#2f9e8f",braun:"#2b1d14",papier:"#f3e9d2",rot:"#c1272d"}},fontFamily:{display:["Oswald","Impact","Arial Narrow","sans-serif"],type:["Special Elite","Courier New",monospace}}}}};</script><style>body{font-family:"Special Elite","Courier New",monospace;}h1,h2,h3{font-family:Oswald,Impact,"Arial Narrow",sans-serif;}</style></head><body class="bg-ost-papier text-ost-braun p-6"><div class="max-w-4xl mx-auto"><h1 class="font-display text-4xl font-bold uppercase text-center mb-6">Европа-Кухня — наше меню</h1>' + menu.innerHTML + '</div></body></html>');
-    win.document.close();
-    win.print();
+ 
+  /* Распечатать меню: печатается только раздел меню (стили в @media print) */
+  document.getElementById('btn-print-menu').addEventListener('click', function () { window.print(); });
+</script>
+<script>
+  /* ===== Аккаунты и история заказов (данные хранятся в браузере, у каждого пользователя своя история) ===== */
+  window.EK = (function () {
+    var mem = {};
+    var store = {
+      get: function (k) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return mem[k] || null; } },
+      set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { mem[k] = v; } }
+    };
+    var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+    var hex = function (buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return x.toString(16).padStart(2, '0'); }).join(''); };
+    async function hash(pw, salt) {
+      var data = new TextEncoder().encode(salt + ':' + pw);
+      if (window.crypto && crypto.subtle) return hex(await crypto.subtle.digest('SHA-256', data));
+      var h = 5381; data.forEach(function (c) { h = ((h << 5) + h + c) >>> 0; }); return 'f' + h.toString(16);
+    }
+    var users = function () { return store.get('ek_users') || {}; };
+    var orders = function () { return store.get('ek_orders') || {}; };
+    var norm = function (e) { return String(e).trim().toLowerCase(); };
+    function user() { var em = store.get('ek_session'), u = em && users()[em]; return u ? { email: em, name: u.name } : null; }
+    function history() { var u = user(); return u ? (orders()[u.email] || []) : []; }
+ 
+    async function register(name, email, pw) {
+      email = norm(email); name = name.trim();
+      if (name.length < 2) return 'Введите имя (минимум 2 символа).';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Введите корректный e-mail.';
+      if (pw.length < 6) return 'Пароль — минимум 6 символов.';
+      var all = users();
+      if (all[email]) return 'Этот e-mail уже зарегистрирован. Попробуйте войти.';
+      var salt = hex(crypto.getRandomValues(new Uint8Array(8)).buffer);
+      all[email] = { name: name, salt: salt, hash: await hash(pw, salt), created: new Date().toISOString() };
+      store.set('ek_users', all); store.set('ek_session', email);
+      return null;
+    }
+    async function login(email, pw) {
+      email = norm(email);
+      var u = users()[email];
+      if (!u || (await hash(pw, u.salt)) !== u.hash) return 'Неверный e-mail или пароль.';
+      store.set('ek_session', email);
+      return null;
+    }
+    function logout() { store.set('ek_session', ''); }
+    function saveOrder(items) {
+      var u = user(); if (!u) return null;
+      var all = orders(), list = all[u.email] || [];
+      var no = String(list.length + 1).padStart(3, '0');
+      list.push({ no: no, date: new Date().toISOString(), items: items, total: items.reduce(function (s, x) { return s + x.qty * x.price; }, 0) });
+      all[u.email] = list; store.set('ek_orders', all);
+      return no;
+    }
+ 
+    var dlg = document.getElementById('acc'), body = document.getElementById('acc-body'), title = document.getElementById('acc-title');
+    var fmt = function (iso) { return new Date(iso).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' }); };
+    function field(id, label, type, ac) {
+      return '<div><label for="acc-' + id + '" class="font-display text-sm uppercase">' + label + '</label><input id="acc-' + id + '" type="' + type + '" autocomplete="' + ac + '" required class="input"></div>';
+    }
+    function guest(tab) {
+      var reg = tab === 'register';
+      title.textContent = reg ? 'Регистрация' : 'Вход';
+      body.innerHTML = '<div class="flex gap-2" role="group" aria-label="Вход или регистрация"><button type="button" data-tab="login" aria-pressed="' + !reg + '" class="btn flex-1 !py-1.5 aria-pressed:bg-ost-orange aria-pressed:text-white">Вход</button><button type="button" data-tab="register" aria-pressed="' + reg + '" class="btn flex-1 !py-1.5 aria-pressed:bg-ost-orange aria-pressed:text-white">Регистрация</button></div>' +
+        '<form id="acc-form" class="mt-4 space-y-3" novalidate>' + (reg ? field('name', 'Имя', 'text', 'name') : '') + field('email', 'E-mail', 'email', 'email') + field('pw', 'Пароль (от 6 символов)', 'password', reg ? 'new-password' : 'current-password') +
+        '<p id="acc-err" role="alert" class="min-h-5 text-xs text-red-600 dark:text-red-400"></p><button type="submit" class="btn-primary w-full">' + (reg ? 'Создать аккаунт' : 'Войти') + '</button></form>' +
+        '<p class="mt-3 text-xs opacity-70">Данные хранятся только в вашем браузере. У каждого аккаунта своя история заказов.</p>';
+      body.querySelectorAll('[data-tab]').forEach(function (b) { b.addEventListener('click', function () { guest(b.dataset.tab); }); });
+      document.getElementById('acc-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var v = function (id) { var el = document.getElementById('acc-' + id); return el ? el.value : ''; };
+        var err = reg ? await register(v('name'), v('email'), v('pw')) : await login(v('email'), v('pw'));
+        if (err) { document.getElementById('acc-err').textContent = err; return; }
+        refresh(); cabinet();
+        var m = document.getElementById('slip-msg'); if (m) m.textContent = 'Вы вошли. Нажмите «Заказать» ещё раз.';
+      });
+    }
+    function cabinet() {
+      var u = user(), h = history().slice().reverse();
+      title.textContent = 'Привет, ' + u.name.split(' ')[0] + '!';
+      var spent = h.reduce(function (s, o) { return s + o.total; }, 0);
+      body.innerHTML = '<p class="opacity-80">' + esc(u.email) + '</p><p class="mt-2 font-display text-lg uppercase">Заказов: ' + h.length + ' · на сумму ' + spent + ' €</p>' +
+        '<h3 class="mt-4 font-display text-sm uppercase tracking-widest text-ost-orange">История заказов</h3>' +
+        '<ul class="mt-2 space-y-3">' + (h.length ? h.map(function (o, idx) {
+          return '<li class="border-2 border-dashed border-ost-braun/40 p-3 dark:border-ost-papier/40"><div class="flex justify-between font-display uppercase"><span>Заказ № ' + o.no + '</span><span>' + o.total + ' €</span></div><p class="text-xs opacity-70">' + fmt(o.date) + '</p><ul class="mt-1">' + o.items.map(function (x) { return '<li>' + esc(x.name) + ' × ' + x.qty + '</li>'; }).join('') + '</ul><button type="button" data-repeat="' + idx + '" class="btn mt-2 !px-3 !py-1">Повторить заказ</button></li>';
+        }).join('') : '<li class="opacity-70">Заказов пока нет. Добавьте блюда в чек и оформите первый заказ.</li>') + '</ul>' +
+        '<div class="mt-5 flex flex-wrap gap-2"><button type="button" id="acc-out" class="btn-primary !py-1.5">Выйти</button>' + (h.length ? '<button type="button" id="acc-clear" class="btn !py-1.5">Очистить историю</button>' : '') + '</div>';
+      body.querySelectorAll('[data-repeat]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          h[+b.dataset.repeat].items.forEach(function (it) {
+            var i = dishes.findIndex(function (d) { return d[1].split('|')[0] === it.name; });
+            if (i > -1) cart[i] = (cart[i] || 0) + it.qty;
+          });
+          render(); dlg.close();
+          document.getElementById('slip').classList.remove('hidden'); document.getElementById('slip-open').setAttribute('aria-expanded', 'true');
+          document.getElementById('slip-msg').textContent = 'Блюда из прошлого заказа добавлены в чек.';
+        });
+      });
+      document.getElementById('acc-out').addEventListener('click', function () { logout(); refresh(); guest('login'); });
+      var c = document.getElementById('acc-clear');
+      if (c) c.addEventListener('click', function () {
+        if (!confirm('Удалить всю историю заказов этого аккаунта?')) return;
+        var all = orders(); delete all[u.email]; store.set('ek_orders', all); cabinet();
+      });
+    }
+    function refresh() {
+      var u = user();
+      document.querySelectorAll('[data-acc]').forEach(function (b) { b.textContent = u ? 'Кабинет' : 'Войти'; b.setAttribute('aria-label', u ? 'Личный кабинет: ' + u.name : 'Войти или зарегистрироваться'); });
+      if (u) {
+        var n = document.getElementById('name'), m = document.getElementById('email');
+        if (n && !n.value) n.value = u.name; if (m && !m.value) m.value = u.email;
+      }
+    }
+    function open(tab) {
+      if (user()) cabinet(); else guest(tab || 'login');
+      if (!dlg.open) dlg.showModal();
+    }
+    document.querySelectorAll('[data-acc]').forEach(function (b) {
+      b.addEventListener('click', function () { var t = document.getElementById('nav-toggle'); if (t) t.checked = false; open('login'); });
+    });
+    document.getElementById('acc-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    refresh();
+    return { user: user, open: open, saveOrder: saveOrder };
+  })();
+</script>
+<script>
+  /* ===== Настоящие фото блюд из Википедии. Если фото не загрузилось — остаётся рисованная тарелка ===== */
+  window.photos = {};
+  window.applyPhotos = function (root) {
+    (root || document).querySelectorAll('[data-k]').forEach(function (tile) {
+      var url = photos[tile.dataset.k];
+      if (!url || tile.dataset.p === url) return;
+      var img = new Image();
+      img.alt = ''; img.className = 'h-full w-full object-cover'; img.referrerPolicy = 'no-referrer';
+      img.onload = function () { tile.dataset.p = url; tile.innerHTML = ''; tile.appendChild(img); };
+      img.src = url;
+    });
+  };
+  (function () {
+    var cand = {
+      oma: ['Blood sausage'], hund: ['Kalter Hund', 'Chocolate salami', 'Chocolate biscuit cake'],
+      jager: ['Jägerschnitzel', 'Schnitzel'], solj: ['Solyanka'], broiler: ['Roast chicken', 'Fried chicken'],
+      ket: ['Ketwurst', 'Hot dog'], wurz: ['Ragout', 'Stew'], quark: ['Quarkkeulchen', 'Syrniki']
+    };
+    var all = [];
+    Object.keys(cand).forEach(function (k) { cand[k].forEach(function (x) { if (all.indexOf(x) < 0) all.push(x); }); });
+    var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=640&titles=' + encodeURIComponent(all.join('|'));
+    fetch(url).then(function (r) { return r.json(); }).then(function (j) {
+      var q = j.query || {}, map = {}, thumb = {};
+      (q.normalized || []).concat(q.redirects || []).forEach(function (m) { map[m.from] = m.to; });
+      var resolve = function (s) { for (var n = 0; n < 3; n++) if (map[s]) s = map[s]; return s; };
+      Object.keys(q.pages || {}).forEach(function (id) { var p = q.pages[id]; if (p.thumbnail) thumb[p.title] = p.thumbnail.source; });
+      Object.keys(cand).forEach(function (k) {
+        for (var i = 0; i < cand[k].length; i++) { var u = thumb[resolve(cand[k][i])]; if (u) { photos[k] = u; break; } }
+      });
+      applyPhotos(document);
+    }).catch(function () { /* нет интернета — остаются рисованные тарелки */ });
+  })();
+</script>
+<script>
+  /* Копирование промокода партнёра */
+  document.getElementById('promo-copy').addEventListener('click', function () {
+    var code = document.getElementById('promo').textContent, m = document.getElementById('promo-msg');
+    var done = function (ok) { m.textContent = ok ? 'Код скопирован' : 'Выделите код и скопируйте вручную'; };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(code).then(function () { done(true); }, function () { done(false); });
+    else { try { var ta = document.createElement('textarea'); ta.value = code; document.body.appendChild(ta); ta.select(); done(document.execCommand('copy')); ta.remove(); } catch (e) { done(false); } }
   });
 </script>
 </body>
 </html>
+ 
